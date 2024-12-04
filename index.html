@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>12 Days of OpenAI</title>
+    <style>
+        :root {
+            --primary-color: #10a37f;
+            --background-color: #f7f7f8;
+            --text-color: #353740;
+            --secondary-color: #444654;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+            line-height: 1.6;
+            color: var(--text-color);
+            background-color: var(--background-color);
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+
+        header {
+            text-align: center;
+            margin-bottom: 3rem;
+            padding: 2rem 0;
+        }
+
+        .title {
+            font-size: 2.5rem;
+            color: var(--primary-color);
+            margin-bottom: 1rem;
+        }
+
+        .subtitle {
+            font-size: 1.2rem;
+            color: var(--secondary-color);
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .tweet-container {
+            background: white;
+            border-radius: 12px;
+            padding: 2rem;
+            margin-bottom: 3rem;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        .updates-section {
+            background: white;
+            border-radius: 12px;
+            padding: 2rem;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        .updates-title {
+            font-size: 1.5rem;
+            color: var(--primary-color);
+            margin-bottom: 1.5rem;
+        }
+
+        .updates-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 1.5rem;
+        }
+
+        .update-card {
+            border: 1px solid #e5e5e5;
+            border-radius: 8px;
+            padding: 1.5rem;
+            background: var(--background-color);
+        }
+
+        .update-date {
+            font-size: 0.9rem;
+            color: var(--secondary-color);
+            margin-bottom: 0.5rem;
+        }
+
+        .update-title {
+            font-size: 1.1rem;
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+        }
+
+        .update-description {
+            font-size: 0.95rem;
+            color: var(--secondary-color);
+        }
+
+        footer {
+            text-align: center;
+            padding: 2rem 0;
+            margin-top: 3rem;
+            color: var(--secondary-color);
+            font-size: 0.9rem;
+        }
+
+        @media (max-width: 768px) {
+            .container {
+                padding: 1rem;
+            }
+
+            .title {
+                font-size: 2rem;
+            }
+
+            .updates-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1 class="title">12 Days of OpenAI</h1>
+            <p class="subtitle">Tracking OpenAI's special announcements and features during their 12 Days event.</p>
+        </header>
+
+        <div class="tweet-container">
+            <blockquote class="twitter-tweet" data-dnt="true">
+                <a href="https://twitter.com/openai/status/1864328928267259941"></a>
+            </blockquote>
+            <script async src="https://platform.twitter.com/widgets.js"></script>
+        </div>
+
+        <section class="updates-section">
+            <h2 class="updates-title">Latest Updates</h2>
+            <div class="updates-grid">
+                <!-- Template for updates -->
+                <div class="update-card">
+                    <div class="update-date">April 3, 2024</div>
+                    <h3 class="update-title">Day 1: Initial Announcement</h3>
+                    <p class="update-description">OpenAI kicks off their 12 Days event with exciting announcements coming soon.</p>
+                </div>
+                <!-- More update cards will be added as announcements are made -->
+            </div>
+        </section>
+
+        <footer>
+            <p>Not affiliated with OpenAI. This is a community project tracking the 12 Days event.</p>
+        </footer>
+    </div>
+</body>
+</html>
