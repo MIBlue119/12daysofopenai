@@ -3,7 +3,10 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Track OpenAI's 12 Days of Announcements - Live updates and countdown">
     <title>12 Days of OpenAI</title>
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500&display=swap" rel="stylesheet">
     <style>
         :root {
             --primary-color: #10a37f;
@@ -26,14 +29,14 @@
         }
 
         .container {
-            max-width: 800px;
+            max-width: 1200px;
             margin: 0 auto;
             padding: 2rem;
         }
 
         header {
             text-align: center;
-            margin-bottom: 3rem;
+            margin-bottom: 2rem;
             padding: 2rem 0;
         }
 
@@ -50,11 +53,67 @@
             margin: 0 auto;
         }
 
-        .tweet-container {
+        .countdown-container {
             background: white;
             border-radius: 12px;
             padding: 2rem;
+            margin-bottom: 2rem;
+            text-align: center;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        .countdown-title {
+            color: var(--primary-color);
+            font-size: 1.2rem;
+            margin-bottom: 1rem;
+        }
+
+        .countdown {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+        }
+
+        .countdown-segment {
+            text-align: center;
+        }
+
+        .countdown-number {
+            font-size: 2.5rem;
+            font-weight: bold;
+            color: var(--primary-color);
+        }
+
+        .countdown-label {
+            font-size: 0.9rem;
+            color: var(--secondary-color);
+            text-transform: uppercase;
+        }
+
+        .countdown-status {
+            font-size: 1.2rem;
+            color: var(--primary-color);
+            margin-top: 1rem;
+            font-weight: 500;
+        }
+        
+        .day-indicator {
+            font-size: 1rem;
+            color: var(--secondary-color);
+            margin-top: 0.5rem;
+        }
+
+        .tweets-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
             margin-bottom: 3rem;
+        }
+
+        .tweet-card {
+            background: white;
+            border-radius: 12px;
+            padding: 2rem;
             box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
         }
 
@@ -118,8 +177,12 @@
                 font-size: 2rem;
             }
 
-            .updates-grid {
-                grid-template-columns: 1fr;
+            .countdown {
+                gap: 1rem;
+            }
+
+            .countdown-number {
+                font-size: 2rem;
             }
         }
     </style>
@@ -131,23 +194,51 @@
             <p class="subtitle">Tracking OpenAI's special announcements and features during their 12 Days event.</p>
         </header>
 
-        <div class="tweet-container">
-            <blockquote class="twitter-tweet" data-dnt="true">
-                <a href="https://twitter.com/openai/status/1864328928267259941"></a>
-            </blockquote>
-            <script async src="https://platform.twitter.com/widgets.js"></script>
+        <div class="countdown-container">
+            <h2 class="countdown-title">Time Until Next Announcement</h2>
+            <div class="countdown">
+                <div class="countdown-segment">
+                    <div id="days" class="countdown-number">00</div>
+                    <div class="countdown-label">Days</div>
+                </div>
+                <div class="countdown-segment">
+                    <div id="hours" class="countdown-number">00</div>
+                    <div class="countdown-label">Hours</div>
+                </div>
+                <div class="countdown-segment">
+                    <div id="minutes" class="countdown-number">00</div>
+                    <div class="countdown-label">Minutes</div>
+                </div>
+                <div class="countdown-segment">
+                    <div id="seconds" class="countdown-number">00</div>
+                    <div class="countdown-label">Seconds</div>
+                </div>
+            </div>
+            <div id="countdown-status" class="countdown-status"></div>
+            <div id="day-indicator" class="day-indicator"></div>
+        </div>
+
+        <div class="tweets-container">
+            <div class="tweet-card">
+                <blockquote class="twitter-tweet" data-dnt="true">
+                    <a href="https://twitter.com/openai/status/1864328928267259941"></a>
+                </blockquote>
+            </div>
+            <div class="tweet-card">
+                <blockquote class="twitter-tweet" data-dnt="true">
+                    <a href="https://twitter.com/sama/status/1864335461268754712"></a>
+                </blockquote>
+            </div>
         </div>
 
         <section class="updates-section">
             <h2 class="updates-title">Latest Updates</h2>
             <div class="updates-grid">
-                <!-- Template for updates -->
                 <div class="update-card">
-                    <div class="update-date">April 3, 2024</div>
-                    <h3 class="update-title">Day 1: Initial Announcement</h3>
-                    <p class="update-description">OpenAI kicks off their 12 Days event with exciting announcements coming soon.</p>
+                    <div class="update-date">December 4, 2024</div>
+                    <h3 class="update-title">Announcement: 12 Days of OpenAI</h3>
+                    <p class="update-description">OpenAI announces their 12 Days event, promising daily livestreams with launches and demos starting December 5th at 10 AM Pacific Time.</p>
                 </div>
-                <!-- More update cards will be added as announcements are made -->
             </div>
         </section>
 
@@ -155,5 +246,75 @@
             <p>Not affiliated with OpenAI. This is a community project tracking the 12 Days event.</p>
         </footer>
     </div>
+
+    <script async src="https://platform.twitter.com/widgets.js"></script>
+    <script>
+        const START_DATE = new Date('2024-12-05T18:00:00.000Z'); // 10:00 AM Pacific Time
+        const DAY_IN_MS = 24 * 60 * 60 * 1000;
+
+        function updateCountdown() {
+            const now = new Date();
+            const diff = START_DATE - now;
+            const daysSinceStart = Math.floor((now - START_DATE) / DAY_IN_MS) + 1;
+            const statusElement = document.getElementById('countdown-status');
+            const dayIndicator = document.getElementById('day-indicator');
+
+            // If we're before the start time
+            if (diff > 0) {
+                const days = Math.floor(diff / (1000 * 60 * 60 * 24));
+                const hours = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+                const minutes = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
+                const seconds = Math.floor((diff % (1000 * 60)) / 1000);
+
+                document.getElementById('days').textContent = days.toString().padStart(2, '0');
+                document.getElementById('hours').textContent = hours.toString().padStart(2, '0');
+                document.getElementById('minutes').textContent = minutes.toString().padStart(2, '0');
+                document.getElementById('seconds').textContent = seconds.toString().padStart(2, '0');
+                
+                statusElement.textContent = "Countdown to First Announcement";
+                dayIndicator.textContent = "";
+            }
+            // If we're within the 12 days period
+            else if (daysSinceStart <= 12) {
+                // Calculate time until next 10 AM Pacific
+                const nextAnnouncement = new Date(START_DATE);
+                nextAnnouncement.setDate(START_DATE.getDate() + (daysSinceStart - 1));
+                const timeUntilNext = nextAnnouncement - now;
+
+                if (timeUntilNext > 0) {
+                    const hours = Math.floor(timeUntilNext / (1000 * 60 * 60));
+                    const minutes = Math.floor((timeUntilNext % (1000 * 60 * 60)) / (1000 * 60));
+                    const seconds = Math.floor((timeUntilNext % (1000 * 60)) / 1000);
+
+                    document.getElementById('days').textContent = '00';
+                    document.getElementById('hours').textContent = hours.toString().padStart(2, '0');
+                    document.getElementById('minutes').textContent = minutes.toString().padStart(2, '0');
+                    document.getElementById('seconds').textContent = seconds.toString().padStart(2, '0');
+                } else {
+                    document.getElementById('days').textContent = '00';
+                    document.getElementById('hours').textContent = '00';
+                    document.getElementById('minutes').textContent = '00';
+                    document.getElementById('seconds').textContent = '00';
+                }
+
+                statusElement.textContent = `Day ${daysSinceStart} of 12`;
+                dayIndicator.textContent = "Today's announcement has started!";
+            }
+            // After all 12 days are complete
+            else {
+                document.getElementById('days').textContent = '00';
+                document.getElementById('hours').textContent = '00';
+                document.getElementById('minutes').textContent = '00';
+                document.getElementById('seconds').textContent = '00';
+                
+                statusElement.textContent = "12 Days of OpenAI has concluded!";
+                dayIndicator.textContent = "Thank you for following along!";
+            }
+        }
+
+        // Update countdown every second
+        setInterval(updateCountdown, 1000);
+        updateCountdown(); // Initial call
+    </script>
 </body>
 </html>
