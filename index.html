@@ -428,7 +428,6 @@
         // Update countdown every second
         setInterval(updateCountdown, 1000);
         updateCountdown(); // Initial call
-
         document.getElementById('newsletterForm').addEventListener('submit', async function(e) {
             e.preventDefault();
 
@@ -436,41 +435,60 @@
             const submitButton = form.querySelector('button[type="submit"]');
             const messageDiv = document.getElementById('formMessage');
 
-            // Disable submit button and clear previous messages
             submitButton.disabled = true;
             messageDiv.className = 'form-message';
             messageDiv.textContent = '';
 
+            console.log('Submitting to:', 'https://script.google.com/macros/s/AKfycbwxqlO_SdZMhGB7IiqmCn5ztUImyxAHEoIJoEeP-XhXh3xVkS6-FYXsqC2c2eSwjLmdKA/exec');
+            console.log('Form data:', {
+                email: form.email.value,
+                name: form.name.value
+            });
+        
             try {
-                const response = await fetch('https://script.google.com/macros/s/AKfycbxV50bqMaFl1Rv5OF164nIvwzxmRnoZC0nETPvrfsTjLpp4HhMi_TLKaPsn0usgbOl9uQ/exec', {
+                const response = await fetch('https://script.google.com/macros/s/AKfycbwxqlO_SdZMhGB7IiqmCn5ztUImyxAHEoIJoEeP-XhXh3xVkS6-FYXsqC2c2eSwjLmdKA/exec', {
                     method: 'POST',
                     mode: 'cors',
                     credentials: 'omit',
                     headers: {
                         'Content-Type': 'application/json',
+                        'Accept': 'application/json'
                     },
                     body: JSON.stringify({
                         email: form.email.value,
                         name: form.name.value
                     })
                 });
-
+            
+                console.log('Response status:', response.status);
+            
                 const data = await response.json();
-
-                if (data.status === 'success') {
+                console.log('Response data:', data);
+            
+                if (response.status === 200 && data.status === 'success') {
                     messageDiv.className = 'form-message success';
                     messageDiv.textContent = 'Thanks for subscribing! You will receive our updates soon.';
                     form.reset();
+                } else if (response.status === 400) {
+                    messageDiv.className = 'form-message error';
+                    messageDiv.textContent = data.message || 'Invalid input. Please check your details and try again.';
+                } else if (response.status === 409) {
+                    messageDiv.className = 'form-message error';
+                    messageDiv.textContent = data.message || 'This email is already subscribed.';
+                } else if (response.status === 500) {
+                    messageDiv.className = 'form-message error';
+                    messageDiv.textContent = 'Server error. Please try again later.';
                 } else {
                     messageDiv.className = 'form-message error';
                     messageDiv.textContent = data.message || 'Something went wrong. Please try again.';
                 }
             } catch (error) {
+                console.error('Detailed error:', error);
                 messageDiv.className = 'form-message error';
-                messageDiv.textContent = 'Network error. Please try again later.';
+                messageDiv.textContent = 'Network error. Please check your connection and try again.';
+            } finally {
+                submitButton.disabled = false;
             }
-
-            submitButton.disabled = false;
         });
     </script>
 </body>
