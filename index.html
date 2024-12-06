@@ -578,14 +578,14 @@
             messageDiv.className = 'form-message';
             messageDiv.textContent = '';
 
-            console.log('Submitting to:', 'https://script.google.com/macros/s/AKfycbwxqlO_SdZMhGB7IiqmCn5ztUImyxAHEoIJoEeP-XhXh3xVkS6-FYXsqC2c2eSwjLmdKA/exec');
+            console.log('Submitting to:', 'https://script.google.com/macros/s/AKfycbzGenic4qznPEetQIP3bfxwYJd-FVs6JJYKifraWDGoDv1ISqitXgKQVhqFepCqsFr5ew/exec');
             console.log('Form data:', {
                 email: form.email.value,
                 name: form.name.value
             });
         
             try {
-                const response = await fetch('https://script.google.com/macros/s/AKfycbwxqlO_SdZMhGB7IiqmCn5ztUImyxAHEoIJoEeP-XhXh3xVkS6-FYXsqC2c2eSwjLmdKA/exec', {
+                const response = await fetch('https://script.google.com/macros/s/AKfycbzGenic4qznPEetQIP3bfxwYJd-FVs6JJYKifraWDGoDv1ISqitXgKQVhqFepCqsFr5ew/exec', {
                     method: 'POST',
                     mode: 'cors',
                     credentials: 'omit',
