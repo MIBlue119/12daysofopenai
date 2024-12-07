@@ -430,10 +430,86 @@
             </section>
         </div>        
 
-        <div id="day2" class="day-content upcoming-content">
-            <div class="upcoming-emoji">🔜</div>
-            <h2 class="upcoming-title">Coming on December 6th </h2>
-            <p>Stay tuned for tomorrow's announcement!</p>
+        <div id="day2" class="day-content active">
+            <section class="resources-section" style="background: white; border-radius: 12px; padding: 2rem; margin: 2rem 0; box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);">
+                <h2 class="resources-title" style="font-size: 1.5rem; color: var(--primary-color); margin-bottom: 1.5rem;">Day 2 Resources</h2>
+                <a href="https://pse.is/6swrkx" style="color: var(--primary-color); text-decoration: none; padding: 1rem; background: #f0f7f4; border-radius: 8px; display: flex; flex-direction: column;">
+                    <span style="font-weight: 500; display: flex; align-items: center; gap: 0.5rem;">
+                        📝 Full Transcript & Summary
+                    </span>
+                    <span style="font-size: 0.9em; color: #666; margin-top: 0.3rem;">
+                        Complete presentation transcript with analysis of Reinforcement Fine-tuning demonstration
+                    </span>
+                </a>
+                
+                <div class="update-highlights" style="margin-bottom: 2rem; padding: 1.5rem; background: #f8f9fa; border-radius: 8px;">
+                    <h3 style="color: var(--primary-color); margin-bottom: 1rem;">Today's Major Updates</h3>
+                    
+                    <div style="margin-bottom: 1.5rem;">
+                        <h4 style="color: var(--primary-color); margin-bottom: 0.5rem;">🔄 Reinforcement Fine-tuning (RFT)</h4>
+                        <ul style="list-style: none; padding-left: 1rem;">
+                            <li>• Advanced from "high school to PhD level" reasoning</li>
+                            <li>• Achieves significant results with just 12 examples</li>
+                            <li>• Same technique used in GPT-4 and O1 series training</li>
+                            <li>• Public launch scheduled for early 2025</li>
+                            <li>• Implemented in Thompson Reuters' Co-counsel AI</li>
+                        </ul>
+                    </div>
+                
+                    <div style="margin-bottom: 1.5rem;">
+                        <h4 style="color: var(--primary-color); margin-bottom: 0.5rem;">⚙️ Technical Implementation</h4>
+                        <ul style="list-style: none; padding-left: 1rem;">
+                            <li>• JSONL format training data structure</li>
+                            <li>• Separate validation dataset prevents memorization</li>
+                            <li>• Advanced grading system (0-1 score range)</li>
+                            <li>• Distributed training infrastructure support</li>
+                            <li>• Automated hyperparameter optimization</li>
+                        </ul>
+                    </div>
+                
+                    <div style="margin-bottom: 1.5rem;">
+                        <h4 style="color: var(--primary-color); margin-bottom: 0.5rem;">🧬 Berkeley Lab Case Study</h4>
+                        <ul style="list-style: none; padding-left: 1rem;">
+                            <li>• 300 million people affected by rare diseases globally</li>
+                            <li>• 1,100 training examples from medical literature</li>
+                            <li>• 31% Top-1 accuracy (Fine-tuned O1 Mini)</li>
+                            <li>• Surpassed base O1 performance (25%)</li>
+                            <li>• Novel open-ended symptom querying capability</li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <div class="resources-links" style="display: flex; flex-direction: column; gap: 1rem;">
+                    <a href="https://www.youtube.com/watch?v=fMJMhBFa_Gc" style="color: var(--primary-color); text-decoration: none; display: flex; align-items: center; gap: 0.5rem;">
+                        🎥 Demo Video
+                    </a>
+                    
+                    <a href="https://openai.com/form/rft-research-program/" style="color: var(--primary-color); text-decoration: none; display: flex; align-items: center; gap: 0.5rem;">
+                        🔬 RFT Research Program Application
+                    </a>
+                    
+                    <a href="https://news.ycombinator.com/item?id=42342697" style="color: var(--primary-color); text-decoration: none; display: flex; align-items: center; gap: 0.5rem;">
+                        💬 HN Discussion
+                    </a>
+                    
+                    <a href="https://scholar.google.co.th/citations?hl=en&user=dc96omUAAAAJ&view_op=list_works&sortby=pubdate" style="color: var(--primary-color); text-decoration: none; display: flex; align-items: center; gap: 0.5rem;">
+                        📚 Justin Reese Research
+                    </a>
+                </div>
+        
+                <h3 style="font-size: 1.3rem; color: var(--primary-color); margin-bottom: 1rem;">Day 2 Presentation</h3>
+                <div style="position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden; margin-bottom: 1rem;">
+                    <iframe
+                        style="position: absolute; top: 0; left: 0; width: 100%; height: 100%;"
+                        src="https://www.youtube.com/embed/fMJMhBFa_Gc"
+                        title="OpenAI Day 2 Presentation"
+                        frameborder="0"
+                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                        allowfullscreen>
+                    </iframe>
+                </div>                
+                
+            </section>
         </div>
 
 
@@ -577,69 +653,7 @@
                    button.click();
                }
            }
-        });       
-        <!-- document.getElementById('newsletterForm').addEventListener('submit', async function(e) {
-            e.preventDefault();
-
-            const form = e.target;
-            const submitButton = form.querySelector('button[type="submit"]');
-            const messageDiv = document.getElementById('formMessage');
-
-            submitButton.disabled = true;
-            messageDiv.className = 'form-message';
-            messageDiv.textContent = '';
-
-            console.log('Submitting to:', 'https://script.google.com/macros/s/AKfycbzGenic4qznPEetQIP3bfxwYJd-FVs6JJYKifraWDGoDv1ISqitXgKQVhqFepCqsFr5ew/exec');
-            console.log('Form data:', {
-                email: form.email.value,
-                name: form.name.value
-            });
-        
-            try {
-                const response = await fetch('https://script.google.com/macros/s/AKfycbzGenic4qznPEetQIP3bfxwYJd-FVs6JJYKifraWDGoDv1ISqitXgKQVhqFepCqsFr5ew/exec', {
-                    method: 'POST',
-                    mode: 'cors',
-                    credentials: 'omit',
-                    headers: {
-                        'Content-Type': 'application/json',
-                        'Accept': 'application/json'
-                    },
-                    body: JSON.stringify({
-                        email: form.email.value,
-                        name: form.name.value
-                    })
-                });
-            
-                console.log('Response status:', response.status);
-            
-                const data = await response.json();
-                console.log('Response data:', data);
-            
-                if (response.status === 200 && data.status === 'success') {
-                    messageDiv.className = 'form-message success';
-                    messageDiv.textContent = 'Thanks for subscribing! You will receive our updates soon.';
-                    form.reset();
-                } else if (response.status === 400) {
-                    messageDiv.className = 'form-message error';
-                    messageDiv.textContent = data.message || 'Invalid input. Please check your details and try again.';
-                } else if (response.status === 409) {
-                    messageDiv.className = 'form-message error';
-                    messageDiv.textContent = data.message || 'This email is already subscribed.';
-                } else if (response.status === 500) {
-                    messageDiv.className = 'form-message error';
-                    messageDiv.textContent = 'Server error. Please try again later.';
-                } else {
-                    messageDiv.className = 'form-message error';
-                    messageDiv.textContent = data.message || 'Something went wrong. Please try again.';
-                }
-            } catch (error) {
-                console.error('Detailed error:', error);
-                messageDiv.className = 'form-message error';
-                messageDiv.textContent = 'Network error. Please check your connection and try again.';
-            } finally {
-                submitButton.disabled = false;
-            }
-        }); -->
+        });
     </script>
 </body>
 </html>
