@@ -1023,5 +1023,137 @@
            }
         });
     </script>
+<script>
+    // Track day navigation interactions
+    document.querySelectorAll('.day-button').forEach(button => {
+        button.addEventListener('click', (e) => {
+            if(!button.classList.contains('upcoming')) {
+                gtag('event', 'select_day', {
+                    'day_number': button.dataset.day,
+                    'day_status': 'active'
+                });
+            } else {
+                gtag('event', 'select_day', {
+                    'day_number': button.dataset.day,
+                    'day_status': 'upcoming'
+                });
+            }
+        });
+    });
+    
+    // Track resource link clicks
+    document.querySelectorAll('.resources-links a').forEach(link => {
+        link.addEventListener('click', (e) => {
+            gtag('event', 'resource_click', {
+                'resource_url': link.href,
+                'resource_text': link.textContent.trim(),
+                'day_number': link.closest('.day-content').id.replace('day', '')
+            });
+        });
+    });
+    
+    // Track newsletter subscriptions
+    document.getElementById('newsletterForm').addEventListener('submit', (e) => {
+        gtag('event', 'newsletter_subscribe', {
+            'form_id': 'newsletterForm'
+        });
+    });
+    
+    // Track video interactions
+    document.querySelectorAll('iframe[src*="youtube"]').forEach(iframe => {
+        iframe.addEventListener('load', () => {
+            gtag('event', 'video_load', {
+                'video_title': iframe.title,
+                'day_number': iframe.closest('.day-content').id.replace('day', '')
+            });
+        });
+    });
+    
+    // Track scroll depth
+    let scrollDepthTracked = {};
+    window.addEventListener('scroll', () => {
+        const winHeight = window.innerHeight;
+        const docHeight = document.documentElement.scrollHeight;
+        const scrollPos = window.scrollY + winHeight;
+        const scrollPercent = Math.round((scrollPos / docHeight) * 100);
+        
+        [25, 50, 75, 90].forEach(milestone => {
+            if(scrollPercent >= milestone && !scrollDepthTracked[milestone]) {
+                scrollDepthTracked[milestone] = true;
+                gtag('event', 'scroll_depth', {
+                    'depth_percentage': milestone,
+                    'page_url': window.location.pathname
+                });
+            }
+        });
+    });
+    
+    // Track time spent on each day's content
+    let dayViewStartTime = {};
+    let currentViewedDay = null;
+    
+    const trackDayView = () => {
+        document.querySelectorAll('.day-content.active').forEach(content => {
+            const dayNumber = content.id.replace('day', '');
+            if(currentViewedDay !== dayNumber) {
+                if(currentViewedDay && dayViewStartTime[currentViewedDay]) {
+                    const timeSpent = Math.round((Date.now() - dayViewStartTime[currentViewedDay]) / 1000);
+                    gtag('event', 'day_view_duration', {
+                        'day_number': currentViewedDay,
+                        'time_seconds': timeSpent
+                    });
+                }
+                currentViewedDay = dayNumber;
+                dayViewStartTime[dayNumber] = Date.now();
+            }
+        });
+    };
+    
+    // Track initial view
+    trackDayView();
+    
+    // Track when day content changes
+    document.querySelectorAll('.day-button').forEach(button => {
+        button.addEventListener('click', trackDayView);
+    });
+    
+    // Track outbound link clicks
+    document.querySelectorAll('a[href^="http"]').forEach(link => {
+        link.addEventListener('click', (e) => {
+            gtag('event', 'outbound_link_click', {
+                'link_url': link.href,
+                'link_text': link.textContent.trim()
+            });
+        });
+    });
+    
+    // Track user engagement time
+    let sessionStartTime = Date.now();
+    window.addEventListener('beforeunload', () => {
+        const sessionDuration = Math.round((Date.now() - sessionStartTime) / 1000);
+        gtag('event', 'session_duration', {
+            'duration_seconds': sessionDuration
+        });
+    });
+    
+    // Track error messages
+    const originalConsoleError = console.error;
+    console.error = function(msg) {
+        gtag('event', 'javascript_error', {
+            'error_message': msg.toString()
+        });
+        originalConsoleError.apply(this, arguments);
+    };
+    
+    // Track form interactions
+    document.querySelectorAll('input, textarea').forEach(field => {
+        field.addEventListener('focus', () => {
+            gtag('event', 'form_field_focus', {
+                'field_name': field.name,
+                'field_type': field.type
+            });
+        });
+    });
+    </script>    
 </body>
 </html>
