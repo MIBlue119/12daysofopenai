@@ -381,7 +381,7 @@
             <button class="day-button active" data-day="6">Day 6</button>
             <button class="day-button active" data-day="7">Day 7</button>
             <button class="day-button active" data-day="8">Day 8</button>
-            <button class="day-button upcoming" data-day="9">Day 9</button>
+            <button class="day-button active" data-day="9">Day 9</button>
             <button class="day-button upcoming" data-day="10">Day 10</button>
             <button class="day-button upcoming" data-day="11">Day 11</button>
             <button class="day-button upcoming" data-day="12">Day 12</button>
@@ -1090,10 +1090,147 @@
             </section>
         </div>
         
-        <div id="day9" class="day-content upcoming-content">
-            <div class="upcoming-emoji">🔜</div>
-            <h2 class="upcoming-title">Coming on December 13th</h2>
-            <p>Stay tuned for upcoming announcement!</p>
+        <div id="day9" class="day-content active">
+            <section class="resources-section" style="background: white; border-radius: 12px; padding: 2rem; margin: 2rem 0; box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);">
+                <h2 class="resources-title" style="font-size: 1.5rem; color: var(--primary-color); margin-bottom: 1.5rem;">Day 9 Resources</h2>
+                <a href="https://pse.is/6ulreq" style="color: var(--primary-color); text-decoration: none; padding: 1rem; background: #f0f7f4; border-radius: 8px; display: flex; flex-direction: column;">
+                    <span style="font-weight: 500; display: flex; align-items: center; gap: 0.5rem;">
+                        📝 Full Transcript & Summary
+                    </span>
+                    <span style="font-size: 0.9em; color: #666; margin-top: 0.3rem;">
+                        Complete presentation transcript featuring developer tools and API updates (powered by DeepWave Meeting-ink)
+                    </span>
+                </a>
+                
+                <div class="update-highlights" style="margin-bottom: 2rem; padding: 1.5rem; background: #f8f9fa; border-radius: 8px;">
+                    <h3 style="color: var(--primary-color); margin-bottom: 1rem;">Today's Major Updates</h3>
+                    
+                    <div style="margin-bottom: 1.5rem;">
+                        <h4 style="color: var(--primary-color); margin-bottom: 0.5rem;">🤖 O1 API Specifications</h4>
+                        <ul style="list-style: none; padding-left: 1rem;">
+                            <li>• O1 Release Version (o1-2024-12-17) Performance:
+                                <ul style="list-style: none; padding-left: 1rem; margin-top: 0.5rem;">
+                                    <li>- GPQA: 75.7 (vs 73.3)</li>
+                                    <li>- MMLU: 91.8 (vs 90.8)</li>
+                                    <li>- SWE-bench: 48.9 (vs 41.3)</li>
+                                    <li>- MATH: 96.4 (vs 85.5)</li>
+                                    <li>- AIME: 79.2 (vs 42.0)</li>
+                                </ul>
+                            </li>
+                            <li>• Core Feature Updates:
+                                <ul style="list-style: none; padding-left: 1rem; margin-top: 0.5rem;">
+                                    <li>- Function Calling with Structured Output integration</li>
+                                    <li>- Developer message priority control</li>
+                                    <li>- Vision input processing</li>
+                                    <li>- Dynamic reasoning effort parameter</li>
+                                    <li>- 60% reduction in thinking tokens</li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </div>
+                
+                    <div style="margin-bottom: 1.5rem;">
+                        <h4 style="color: var(--primary-color); margin-bottom: 0.5rem;">🎙️ Realtime API Updates</h4>
+                        <ul style="list-style: none; padding-left: 1rem;">
+                            <li>• WebRTC Integration:
+                                <ul style="list-style: none; padding-left: 1rem; margin-top: 0.5rem;">
+                                    <li>- Automatic audio stream processing</li>
+                                    <li>- Network congestion management</li>
+                                    <li>- Real-time noise suppression/audio encoding</li>
+                                    <li>- Native browser API support</li>
+                                </ul>
+                            </li>
+                            <li>• Pricing Updates:
+                                <ul style="list-style: none; padding-left: 1rem; margin-top: 0.5rem;">
+                                    <li>- GPT-4O Audio: $40/1M input, $80/1M output tokens</li>
+                                    <li>- GPT-4O mini: $10/1M input, $20/1M output tokens</li>
+                                    <li>- Cached audio: 87.5% cost reduction</li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </div>
+                
+                    <div style="margin-bottom: 1.5rem;">
+                        <h4 style="color: var(--primary-color); margin-bottom: 0.5rem;">🎯 Preference Fine-Tuning (PFT)</h4>
+                        <ul style="list-style: none; padding-left: 1rem;">
+                            <li>• Technical Features:
+                                <ul style="list-style: none; padding-left: 1rem; margin-top: 0.5rem;">
+                                    <li>- Pairwise comparison learning mechanism</li>
+                                    <li>- Human annotation and A/B testing support</li>
+                                    <li>- Synthetic data generation capability</li>
+                                    <li>- Same pricing as SFT</li>
+                                </ul>
+                            </li>
+                            <li>• Use Cases:
+                                <ul style="list-style: none; padding-left: 1rem; margin-top: 0.5rem;">
+                                    <li>- Creative writing generation</li>
+                                    <li>- Content summarization</li>
+                                    <li>- Dialogue style adjustment</li>
+                                    <li>- Subjective evaluation tasks</li>
+                                </ul>
+                            </li>
+                            <li>• Real-world Results:
+                                <ul style="list-style: none; padding-left: 1rem; margin-top: 0.5rem;">
+                                    <li>- Rogo AI case: Financial analysis assistant</li>
+                                    <li>- Query expansion accuracy improved by 5%</li>
+                                    <li>- Base model 75% → 80%+ after optimization</li>
+                                    <li>- Improved out-of-distribution query handling</li>
+                                </ul>
+                            </li>
+                            <li>• Model Support:
+                                <ul style="list-style: none; padding-left: 1rem; margin-top: 0.5rem;">
+                                    <li>- Available now: gpt-4o-2024-08-06</li>
+                                    <li>- Coming soon: gpt-4o-mini-2024-07-18</li>
+                                    <li>- New model support coming early next year</li>
+                                    <li>- Maintains same pricing as supervised training</li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </div>
+            
+                    <div style="margin-bottom: 1.5rem;">
+                        <h4 style="color: var(--primary-color); margin-bottom: 0.5rem;">💬 Product Lead Quote</h4>
+                        <p style="padding-left: 1rem; font-style: italic;">
+                            "Today is all about developers and start-ups building on top of the OpenAI API. As a thank you gift, we have several new models and features to announce today to thank you for being a part of the community."
+                            <br>- Olivier Godement, OpenAI Platform Product Lead
+                        </p>
+                    </div>
+                </div>
+                
+                <div class="resources-links" style="display: flex; flex-direction: column; gap: 1rem;">
+                    <a href="https://www.youtube.com/watch?v=14leJ1fg4Pw" style="color: var(--primary-color); text-decoration: none; display: flex; align-items: center; gap: 0.5rem;">
+                        🎥 Demo Video
+                    </a>
+                    
+                    <a href="https://openai.com/index/o1-and-new-tools-for-developers/" style="color: var(--primary-color); text-decoration: none; display: flex; align-items: center; gap: 0.5rem;">
+                        📚 Official Developer Tools Overview
+                    </a>
+                    
+                    <a href="https://platform.openai.com/docs/guides/realtime" style="color: var(--primary-color); text-decoration: none; display: flex; align-items: center; gap: 0.5rem;">
+                        🔌 Realtime API Documentation
+                    </a>
+        
+                    <a href="https://platform.openai.com/docs/guides/realtime-webrtc" style="color: var(--primary-color); text-decoration: none; display: flex; align-items: center; gap: 0.5rem;">
+                        🌐 WebRTC Integration Guide
+                    </a>
+        
+                    <a href="https://platform.openai.com/docs/guides/fine-tuning" style="color: var(--primary-color); text-decoration: none; display: flex; align-items: center; gap: 0.5rem;">
+                        📖 Fine-tuning Guide
+                    </a>
+                </div>
+            
+                <h3 style="font-size: 1.3rem; color: var(--primary-color); margin-bottom: 1rem;">Day 9 Presentation</h3>
+                <div style="position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden; margin-bottom: 1rem;">
+                    <iframe
+                        style="position: absolute; top: 0; left: 0; width: 100%; height: 100%;"
+                        src="https://www.youtube.com/embed/14leJ1fg4Pw"
+                        title="OpenAI Day 9 Presentation"
+                        frameborder="0"
+                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                        allowfullscreen>
+                    </iframe>
+                </div>                
+            </section>
         </div>
         
         <div id="day10" class="day-content upcoming-content">
